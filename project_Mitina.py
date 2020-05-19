@@ -16,17 +16,17 @@ def score_game(game_core):
 
 def game_core_v2(number):
     """Функция принимает загаданное число и возвращает число попыток. Поиск числа осуществляется бинарным методом"""
-    count = 1
-    predict = 51
-    min_number = 0
-    max_number = 101
+    count = 1  # счетчик итераций поиска
+    predict = 51  # разбиваем диапазон поиска пополам
+    min_number = 0  # нижний предел диапазона
+    max_number = 101  # верхний
     while number != predict:
         count += 1
         if number > predict:
-            min_number = predict  # ограничиваем диапазон угадываемого числа снизу
-            predict += (max_number - predict) // 2
+            min_number = predict  # ограничиваем диапазон поиска снизу
+            predict += (max_number - predict) // 2  # середина поиска
         elif number < predict:
-            max_number = predict  # ограничиваем диапазон угадываемого числа сверху
+            max_number = predict  # ограничиваем диапазон поиска сверху
             predict -= (predict - min_number) // 2
     return count  # выход из цикла, если угадали
 
